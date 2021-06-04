@@ -15,5 +15,9 @@ Przerób dialog tak żeby wyświetlał tylko zaznaczoneosoby powyżej 30 roku ż
 ![Result](./4.png?raw=true)
 
 
+#Zadanie 5
+Przerób dialog tak żeby można było z niego swobodniekopiować tekst (na przykład zprogramu do wiadomości mailowej albo Slacka). Upewnijsię że treść w polu testowym jest“zawijana” i nie może być modyfikowana przez użytkownika.
+![Result](./5.png?raw=true)
+
 
 
