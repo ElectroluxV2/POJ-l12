@@ -10,6 +10,9 @@ Dodaj przycisk (nad tabelą), którego wciśnięcie wypiszedo konsoli informacj�
 Przerób przycisk tak, żeby wyświetlał informację ozaznaczonych osobach w dialogu
 ![Result](./3.png?raw=true)
 
+#Zadanie 4
+Przerób dialog tak żeby wyświetlał tylko zaznaczoneosoby powyżej 30 roku życia.DodajLabelpod tabelą, który będzie ostrzegał o ilościzaznaczonych osób poniżej 30 roku,życia, które nie zostaną uwzględnione w dialogu.
+![Result](./4.png?raw=true)
 
 
 
