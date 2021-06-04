@@ -2,6 +2,7 @@ package org.example;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -16,6 +17,12 @@ public class Exercise1 extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+        var scene = new Scene(new StackPane(new VBox(prepareTable())), 640, 480);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    static TableView<Person> prepareTable() {
         var table = new TableView<Person>();
         table.getItems().addAll(
                 new Person("Jacek", 31, Person.Gender.MALE),
@@ -29,8 +36,8 @@ public class Exercise1 extends Application {
         var genderColumn = new TableColumn<Person, Person.Gender>("Gender");
         genderColumn.setCellValueFactory(new PropertyValueFactory<>("gender"));
         table.getColumns().addAll(nameColumn, ageColumn, genderColumn);
-        var scene = new Scene(new StackPane(new VBox(table)), 640, 480);
-        stage.setScene(scene);
-        stage.show();
+
+        table.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        return table;
     }
 }

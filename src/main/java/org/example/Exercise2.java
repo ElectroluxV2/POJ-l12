@@ -3,13 +3,12 @@ package org.example;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.SelectionMode;
-import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+
+import static org.example.Exercise1.prepareTable;
 
 public class Exercise2 extends Application {
 
@@ -19,21 +18,13 @@ public class Exercise2 extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        var table = new TableView<Person>();
-        table.getItems().addAll(
-                new Person("Jacek", 31, Person.Gender.MALE),
-                new Person("Marek", 22, Person.Gender.MALE),
-                new Person("Ania", 43, Person.Gender.FEMALE)
-        );
-        var nameColumn = new TableColumn<Person, String>("Name");
-        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
-        var ageColumn = new TableColumn<Person, Integer>("Age");
-        ageColumn.setCellValueFactory(new PropertyValueFactory<>("age"));
-        var genderColumn = new TableColumn<Person, Person.Gender>("Gender");
-        genderColumn.setCellValueFactory(new PropertyValueFactory<>("gender"));
-        table.getColumns().addAll(nameColumn, ageColumn, genderColumn);
+        var table = prepareTable();
+        var scene = new Scene(new StackPane(new VBox(prepareButton(table), table)), 640, 480);
+        stage.setScene(scene);
+        stage.show();
+    }
 
-        table.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+    static Button prepareButton(TableView<Person> table) {
         var button = new Button("Print info about selected");
         button.setOnMouseClicked(mouseEvent -> {
             var sb = new StringBuilder();
@@ -41,11 +32,9 @@ public class Exercise2 extends Application {
                 sb.append(p.toString());
                 sb.append(System.lineSeparator());
             }
-            System.out.println(sb);
+            System.out.println(sb.toString());
         });
 
-        var scene = new Scene(new StackPane(new VBox(button, table)), 640, 480);
-        stage.setScene(scene);
-        stage.show();
+        return button;
     }
 }
